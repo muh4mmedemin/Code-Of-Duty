@@ -1,0 +1,28 @@
+name: Belirlenecek Konu (TBD)
+description: Henüz karar verilmemiş hikâye, evren veya karakter konusu için yer tutucu
+title: "[S] [TBD] "
+labels: ["narrative", "tbd"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Bu şablon yalnızca **yer tutucu** içindir. Karar verilmemiş içerik yazmayın, yalnızca neyin kararlaştırılması gerektiğini belirtin.
+        Karar verildiğinde issue güncellenir ve `tbd` etiketi kaldırılır.
+  - type: textarea
+    id: aciklama
+    attributes:
+      label: Açıklama
+      description: Hangi konunun kararlaştırılması gerekiyor?
+    validations:
+      required: true
+  - type: textarea
+    id: kabul
+    attributes:
+      label: Kabul Kriterleri
+      value: |
+        - [ ] Karar verildi ve dökümana yazıldı
+  - type: textarea
+    id: bagimlilik
+    attributes:
+      label: Bağımlılıklar
+      value: "Yok"
