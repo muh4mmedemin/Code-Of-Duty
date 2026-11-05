@@ -1,0 +1,48 @@
+# ---------------------------------------------
+# Satır sonları
+# ---------------------------------------------
+# Tüm metin dosyalarında LF kullan (Windows/Linux/macOS arası tutarlılık)
+* text=auto eol=lf
+
+# Windows betikleri CRLF kalsın
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+# ---------------------------------------------
+# Git LFS: büyük ikili dosyalar
+# Kullanmadan önce: git lfs install
+# ---------------------------------------------
+
+# Ses
+*.wav  filter=lfs diff=lfs merge=lfs -text
+*.ogg  filter=lfs diff=lfs merge=lfs -text
+*.mp3  filter=lfs diff=lfs merge=lfs -text
+*.flac filter=lfs diff=lfs merge=lfs -text
+
+# 3D modeller
+*.glb   filter=lfs diff=lfs merge=lfs -text
+*.blend filter=lfs diff=lfs merge=lfs -text
+*.fbx   filter=lfs diff=lfs merge=lfs -text
+*.obj   filter=lfs diff=lfs merge=lfs -text
+
+# Dokular ve görseller
+*.png  filter=lfs diff=lfs merge=lfs -text
+*.jpg  filter=lfs diff=lfs merge=lfs -text
+*.jpeg filter=lfs diff=lfs merge=lfs -text
+*.webp filter=lfs diff=lfs merge=lfs -text
+*.psd  filter=lfs diff=lfs merge=lfs -text
+*.exr  filter=lfs diff=lfs merge=lfs -text
+*.hdr  filter=lfs diff=lfs merge=lfs -text
+
+# Yazı tipleri
+*.ttf filter=lfs diff=lfs merge=lfs -text
+*.otf filter=lfs diff=lfs merge=lfs -text
+
+# Video
+*.ogv filter=lfs diff=lfs merge=lfs -text
+*.mp4 filter=lfs diff=lfs merge=lfs -text
+
+# Godot ikili kaynakları ve lightmap verileri
+*.res     filter=lfs diff=lfs merge=lfs -text
+*.scn     filter=lfs diff=lfs merge=lfs -text
+*.lmbake  filter=lfs diff=lfs merge=lfs -text
