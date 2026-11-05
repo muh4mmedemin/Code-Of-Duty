@@ -1,0 +1,42 @@
+name: Görev
+description: Yeni bir geliştirme görevi (oynanış, yapay zekâ, sanat, ses, arayüz, altyapı vb.)
+title: "[M?] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Başlığı `[M1] Kısa görev adı` biçiminde yazın (köşeli parantez içinde milestone kodu: M0, M1, M2, M3, M4 veya S).
+        Etiketleri ve milestone'u issue açıldıktan sonra sağ panelden atayın.
+  - type: textarea
+    id: aciklama
+    attributes:
+      label: Açıklama
+      description: Görevin kısa açıklaması.
+    validations:
+      required: true
+  - type: textarea
+    id: kabul
+    attributes:
+      label: Kabul Kriterleri
+      description: Görevin tamamlanmış sayılması için gereken koşullar.
+      value: |
+        - [ ] 
+        - [ ] 
+    validations:
+      required: true
+  - type: textarea
+    id: bagimlilik
+    attributes:
+      label: Bağımlılıklar
+      description: Bu görevin bağlı olduğu issue'lar (ör. "Bu issue #3'e bağlıdır"). Yoksa "Yok" yazın.
+      value: "Yok"
+  - type: dropdown
+    id: oncelik
+    attributes:
+      label: Öncelik
+      options:
+        - Yüksek
+        - Orta
+        - Düşük
+    validations:
+      required: true

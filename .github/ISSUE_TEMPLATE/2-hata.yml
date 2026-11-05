@@ -1,0 +1,43 @@
+name: Hata Bildirimi
+description: Oyunda veya projede bulunan bir hatayı bildirin
+title: "[Hata] "
+labels: ["bug"]
+body:
+  - type: textarea
+    id: aciklama
+    attributes:
+      label: Açıklama
+      description: Hata nedir? Ne oluyor?
+    validations:
+      required: true
+  - type: textarea
+    id: adimlar
+    attributes:
+      label: Yeniden Oluşturma Adımları
+      value: |
+        1. 
+        2. 
+        3. 
+    validations:
+      required: true
+  - type: textarea
+    id: beklenen
+    attributes:
+      label: Beklenen Davranış
+    validations:
+      required: true
+  - type: textarea
+    id: ortam
+    attributes:
+      label: Ortam
+      description: Godot sürümü, işletim sistemi, ekran kartı, oyunun commit/sürümü
+      value: |
+        - Godot sürümü: 
+        - İşletim sistemi: 
+        - Ekran kartı: 
+        - Commit / sürüm: 
+  - type: textarea
+    id: ekler
+    attributes:
+      label: Ekran Görüntüsü / Log
+      description: Varsa ekran görüntüsü, video veya hata çıktısı ekleyin.
