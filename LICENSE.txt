@@ -1,0 +1,29 @@
+PROPRIETARY LICENSE - ALL RIGHTS RESERVED
+ 
+This software, including its source code, assets, documentation, and all
+associated files (the "Project"), is the exclusive property of the copyright
+holder named below.
+ 
+No permission is granted to any person to use, copy, modify, merge, publish,
+distribute, sublicense, sell, or create derivative works of the Project, in
+whole or in part, in source or binary form, for any purpose, whether
+commercial or non-commercial, without the prior explicit written permission
+of the copyright holder.
+ 
+Viewing the Project's source code on the platform where it is hosted does not
+grant any license or right to use it. Any rights that the terms of service of
+that hosting platform give to other users (such as viewing and forking within
+that platform) are limited to those terms and do not extend to any other use
+of the Project.
+ 
+Unauthorized use, reproduction, or distribution of the Project is prohibited
+and may result in legal action.
+ 
+THE PROJECT IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+COPYRIGHT HOLDER BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+CONNECTION WITH THE PROJECT OR THE USE OR OTHER DEALINGS IN THE PROJECT.
+ 
+Copyright (c) 2026 muh4mmedemin. All rights reserved.

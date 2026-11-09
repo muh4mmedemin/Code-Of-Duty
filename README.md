@@ -1,65 +1,61 @@
 # Code-Of-Duty
 
-**Code-Of-Duty**, Godot 4 ile geliştirilen, tek oyunculu, görev tabanlı bir birinci şahıs nişancı (FPS) oyunudur. Hızlı ve akıcı çatışmaları, senaryolu sinematik anları ve sade bir low-poly görsel stili bir araya getirir.
+Godot 4 ile geliştirilen, hikaye odaklı, tek oyunculu bir birinci şahıs nişancı (FPS) oyunu. Oyun görev (mission) tabanlı bir kampanyadan oluşur; raunt, maç ya da çok oyunculu mod yoktur.
 
-> 🚧 **Durum:** Proje planlama aşamasında. Geliştirme yol haritası [Issues](../../issues) ve [Milestones](../../milestones) sayfalarından takip ediliyor.
+> **Durum:** Erken geliştirme aşaması (prototip). Oyun henüz oynanabilir bir sürümde değil.
 
-## Projenin Amacı
+## Oyun Hakkında
 
-Klasik kampanya odaklı FPS oyunlarının hissini, **çoğu bilgisayarda akıcı çalışan** hafif bir oyunda sunmak. Hedefimiz:
+- **Tür:** Hikayeli, tek oyunculu FPS
+- **Yapı:** Görevlerden oluşan kısa bir kampanya
+- **Görünüm:** Low poly 3D
+- **Temel oynanış:** Hızlı tempolu çatışmalar, siper kullanımı, görevler arasında ilerleyen hikaye
 
-- Lineer, görev bazlı bölümlerle sürükleyici bir tek oyunculu deneyim oluşturmak
-- Hızlı ve tatmin edici bir silah ve hareket hissi yakalamak
-- Düşük poligonlu (low-poly) sade bir görsel stil ile **eski ve düşük özellikli PC'lerde** bile yüksek performans sağlamak
+### Hikaye
 
-## Öne Çıkan Özellikler (Planlanan)
+[Buraya oyunun hikayesini 2-3 cümleyle yaz: oyuncu kim, ne yapmaya çalışıyor, karşısındaki tehdit ne?]
 
-- 🎯 **Görev bazlı lineer bölümler:** Açık dünya yerine hedef odaklı, tempolu bölüm akışı
-- 🏃 **Akıcı hareket:** Sprint, zıplama, eğilme ve nişan alma (ADS)
-- ❤️ **Yenilenen sağlık ve siper mantığı:** Siper alarak hayatta kalma odaklı çatışmalar
-- 🤖 **Düşman yapay zekâsı:** Devriye, algılama (görüş ve ses), siper alma ve saldırı davranışları
-- 💥 **Senaryolu anlar:** Patlamalar, kamera sarsıntıları ve telsiz konuşmaları
-- 💾 **Checkpoint sistemi:** Bölüm içinde otomatik kayıt noktaları
-- ⚙️ **Geniş grafik ayarları:** Düşük sistemlere uyum için ölçeklenebilir görüntü kalitesi
+### Planlanan Özellikler
 
-## Teknolojiler
+- Akıcı hareket ve tatmin edici silah hissi
+- Farklı silahlar ve düşman türleri
+- Çatışma arenaları, sahnelenmiş büyük anlar ve telsiz diyaloğu ile anlatılan hikaye
+- Checkpoint ve kaydetme sistemi
+- Zorluk seviyeleri
 
-| Konu | Seçim |
-|---|---|
-| Oyun motoru | Godot 4.x |
-| Programlama dili | GDScript |
-| Renderer | Compatibility (düşük donanım desteği için) |
-| Görsel stil | Low-poly, flat shaded, ortak renk paleti dokusu |
-| Platform | PC (Windows, ileride Linux) |
+## Teknik Bilgiler
 
-## Görsel Stil
+- **Oyun motoru:** Godot 4.x
+- **Renderer:** Forward+
+- **Dil:** GDScript
+- **Platform:** PC
 
-- Sade formlu, keskin kenarlı, düz gölgeli (flat shaded) modeller
-- Tüm modellerin paylaştığı 16-32 renkli tek bir palet dokusu
-- Hafif sis, yumuşak ortam ışığı ve okunabilirlik için kontrast vurgu renkleri
+## Projeyi Çalıştırma
 
-## Yol Haritası
+1. [Godot 4](https://godotengine.org/download) sürümünü indir.
+2. Bu depoyu klonla:
+   ```
+   git clone https://github.com/muh4mmedemin/Code-Of-Duty.git
+   ```
+3. Godot Project Manager'da **Import** seçeneğiyle klasördeki `project.godot` dosyasını seç.
+4. Projeyi aç ve **F5** ile çalıştır.
 
-| Aşama | Hedef |
-|---|---|
-| **M0:** Proje Kurulumu | Repo, Godot projesi ve altyapı |
-| **M1:** Prototip | Gri kutu haritada yürüyen ve ateş eden oyuncu |
-| **M2:** Temel Oynanış | Düşmanlar, sağlık, silahlar ve HUD ile oynanabilir döngü |
-| **M3:** Dikey Dilim | Menü, ses ve checkpoint ile cilalı tam bir bölüm |
-| **M4:** Genişletme | Ek bölümler, düşmanlar, silahlar ve cilalama |
-| **S:** Hikâye ve Evren | Hikâye, evren ve karakter kararları (henüz belirlenmedi) |
+## Klasör Yapısı
 
-## Kapsam Dışı
+```
+assets/     # model, ses, doku
+levels/     # görev haritaları
+scenes/     # oyuncu, silah, düşman ve diğer sahneler
+scripts/    # GDScript dosyaları
+ui/         # menüler ve HUD
+```
 
-- Çok oyunculu (multiplayer) mod
-- Açık dünya
+## Üçüncü Taraf Lisansları
 
-## Lisanslar ve Üçüncü Taraf Bildirimleri
+Bu oyun [Godot Engine](https://godotengine.org) ile yapılmıştır. Godot, MIT lisansı altındadır; lisans metni [THIRD_PARTY_LICENSES.txt](THIRD_PARTY_LICENSES.txt) dosyasındadır. Projede kullanılan diğer dış varlıklar (varsa) aynı dosyada, kendi lisanslarıyla listelenir.
 
-Bu proje [Godot Engine](https://godotengine.org) ile geliştirilmektedir. Godot Engine MIT lisansı altında dağıtılır.
+## Lisans
 
-Kullanılan üçüncü taraf asset'ler (model, ses, yazı tipi vb.) eklendikçe bu bölümde kaynaklarıyla birlikte listelenecektir.
+Bu proje özel lisans altındadır. Tüm hakları saklıdır; izinsiz kullanılamaz, kopyalanamaz ve dağıtılamaz. Ayrıntılar için [LICENSE.txt](LICENSE.txt) dosyasına bak.
 
----
-
-Copyright © 2026 muh4mmedemin. All rights reserved.
+Copyright (c) 2026 muh4mmedemin. All rights reserved.
