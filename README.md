@@ -25,8 +25,9 @@ Godot 4 ile geliştirilen, hikaye odaklı, tek oyunculu bir birinci şahıs niş
 
 ## Teknik Bilgiler
 
-- **Oyun motoru:** Godot 4.x
-- **Renderer:** Forward+
+- **Oyun motoru:** Godot 4.x (proje 4.7 ile oluşturuldu)
+- **Renderer:** Forward+ (Vulkan / Direct3D 12 destekli ekran kartı gerektirir)
+- **Fizik motoru:** Jolt Physics
 - **Dil:** GDScript
 - **Platform:** PC
 
@@ -37,22 +38,40 @@ Godot 4 ile geliştirilen, hikaye odaklı, tek oyunculu bir birinci şahıs niş
    ```
    git clone https://github.com/muh4mmedemin/Code-Of-Duty.git
    ```
-3. Godot Project Manager'da **Import** seçeneğiyle klasördeki `project.godot` dosyasını seç.
+3. Godot Project Manager'da **Import** seçeneğiyle `code-of-duty/project.godot` dosyasını seç.
 4. Projeyi aç ve **F5** ile çalıştır.
 
 ## Klasör Yapısı
 
 ```
-assets/     # model, ses, doku
-levels/     # görev haritaları
-scenes/     # oyuncu, silah, düşman ve diğer sahneler
-scripts/    # GDScript dosyaları
-ui/         # menüler ve HUD
+Code-Of-Duty/
+├── code-of-duty/           # Godot projesi
+│   ├── project.godot       # proje dosyası
+│   ├── assets/
+│   │   ├── audio/          # ses efektleri ve müzik
+│   │   ├── models/         # 3D modeller
+│   │   └── textures/       # dokular ve palet
+│   ├── levels/             # görev haritaları
+│   ├── scenes/             # oyuncu, silah, düşman ve diğer sahneler
+│   ├── scripts/            # GDScript dosyaları
+│   └── ui/                 # menüler ve HUD
+├── docs/                   # proje dökümanları
+│   ├── CODING_STANDART.md  # kodlama standartları
+│   └── INPUT_MAP.md        # tuş atamaları
+├── .github/ISSUE_TEMPLATE/ # issue şablonları
+├── LICENSE.txt
+├── THIRD PARTY LICENSE.txt
+└── README.md
 ```
+
+## Dökümanlar
+
+- [Kodlama Standartları](docs/CODING_STANDART.md): isimlendirme, script ve sahne düzeni kuralları
+- [Girdi Haritası](docs/INPUT_MAP.md): eylemler ve varsayılan tuşlar
 
 ## Üçüncü Taraf Lisansları
 
-Bu oyun [Godot Engine](https://godotengine.org) ile yapılmıştır. Godot, MIT lisansı altındadır; lisans metni [THIRD_PARTY_LICENSES.txt](THIRD_PARTY_LICENSES.txt) dosyasındadır. Projede kullanılan diğer dış varlıklar (varsa) aynı dosyada, kendi lisanslarıyla listelenir.
+Bu oyun [Godot Engine](https://godotengine.org) ile yapılmıştır. Godot, MIT lisansı altındadır; lisans metni [THIRD PARTY LICENSE.txt](THIRD%20PARTY%20LICENSE.txt) dosyasındadır. Projede kullanılan diğer dış varlıklar (varsa) aynı dosyada, kendi lisanslarıyla listelenir.
 
 ## Lisans
 
