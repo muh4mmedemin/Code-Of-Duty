@@ -11,6 +11,10 @@ size = Vector3(38.112854, 1, 29.215942)
 
 [sub_resource type="BoxMesh" id="BoxMesh_ew6px"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_dklp6"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_fodb4"]
+
 [node name="Main" type="Node3D" unique_id=1986234648]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=652480096]
@@ -24,12 +28,21 @@ compositor = SubResource("Compositor_o5qli")
 [node name="Player" parent="." unique_id=47788392 instance=ExtResource("1_o5qli")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7990444, 1.6709387, 5.0934753)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=2068436621]
+[node name="Floor" type="StaticBody3D" parent="." unique_id=2068436621]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1083809842]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor" unique_id=1083809842]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.261078, 0, 1.3833618)
 shape = SubResource("BoxShape3D_jv1ba")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D/CollisionShape3D" unique_id=425819317]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor/CollisionShape3D" unique_id=425819317]
 transform = Transform3D(37.916515, 0, 0, 0, 1, 0, 0, 0, 28.680176, 0, 0, 0)
 mesh = SubResource("BoxMesh_ew6px")
+
+[node name="Box" type="StaticBody3D" parent="." unique_id=184100228]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 2.8560681, 0, 2.9901621, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Box" unique_id=1978701126]
+shape = SubResource("BoxShape3D_dklp6")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Box/CollisionShape3D" unique_id=1285021355]
+mesh = SubResource("BoxMesh_fodb4")
