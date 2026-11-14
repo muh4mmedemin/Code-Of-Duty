@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
 @onready var player: CharacterBody3D = $"."
-@onready var camera: Camera3D = $Camera3D
+@onready var camera: Camera3D = $Head/Camera3D
 
 var player_speed = WALK_SPEED
 const WALK_SPEED = 5.0
@@ -21,6 +21,7 @@ func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	$CollisionShape3D.position.y = 3.0 / 2.0
 	
+	$Head.position = Vector3(0.0, 3.0 - 0.5, 0.0)
 	var sphere = SphereShape3D.new()
 	sphere.radius = 0.40
 	
