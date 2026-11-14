@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://bhpb2thi0m1bu"]
+
+[ext_resource type="PackedScene" uid="uid://dibcmpde4snpj" path="res://scenes/player.tscn" id="1_o5qli"]
+
+[sub_resource type="Environment" id="Environment_sgp6g"]
+
+[sub_resource type="Compositor" id="Compositor_o5qli"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jv1ba"]
+size = Vector3(38.112854, 1, 29.215942)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ew6px"]
+
+[node name="Main" type="Node3D" unique_id=1986234648]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=652480096]
+transform = Transform3D(-0.048964735, 0.6130456, 0.78852874, -0.40928417, -0.7324642, 0.5440428, 0.91109216, -0.2960934, 0.28677475, -5.9481316, 6.743587, 13.824946)
+light_color = Color(1, 1, 0.18039216, 1)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1982032065]
+environment = SubResource("Environment_sgp6g")
+compositor = SubResource("Compositor_o5qli")
+
+[node name="Player" parent="." unique_id=47788392 instance=ExtResource("1_o5qli")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7990444, 1.6709387, 5.0934753)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=2068436621]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1083809842]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.261078, 0, 1.3833618)
+shape = SubResource("BoxShape3D_jv1ba")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D/CollisionShape3D" unique_id=425819317]
+transform = Transform3D(37.916515, 0, 0, 0, 1, 0, 0, 0, 28.680176, 0, 0, 0)
+mesh = SubResource("BoxMesh_ew6px")

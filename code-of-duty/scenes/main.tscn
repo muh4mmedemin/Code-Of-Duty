@@ -22,7 +22,7 @@ environment = SubResource("Environment_sgp6g")
 compositor = SubResource("Compositor_o5qli")
 
 [node name="Player" parent="." unique_id=47788392 instance=ExtResource("1_o5qli")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7990444, 3.3941698, 5.0934753)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7990444, 1.6709387, 5.0934753)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=2068436621]
 
