@@ -26,7 +26,7 @@ mesh = SubResource("CapsuleMesh_5ieep")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2267923, 0)
 
 [node name="Camera3D" type="Camera3D" parent="CharacterBody3D/Head" unique_id=1426303998]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.0026588)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.54487467, 2.9860601)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D/Head" unique_id=1234267546]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.02086246, 0)
