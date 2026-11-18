@@ -7,8 +7,8 @@
 | `move_left` | A |
 | `move_right` | D |
 | `jump` | Boşluk |
-| `sprint` | Shift |
-| `crouch` | Ctrl |
+| `player_sprint` | Shift |
+| `player_crouch` | Ctrl |
 | `prone` | Z |
 | `lean_left` | Q |
 | `lean_right` | E |
