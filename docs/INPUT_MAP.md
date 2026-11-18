@@ -17,10 +17,11 @@
 | `reload` | R |
 | `quick_reload` | R (çift basış) |
 | `throw_grenade` | G |
-| `interact` | F |
+| `interact` | F (yerdeki silahı alma dahil) |
+| `drop_weapon` | Belirlenecek |
 | `inspect_weapon` | H |
-| `slot_1` | 1 |
-| `slot_2` | 2 |
-| `slot_3` | 3 |
-| `slot_4` | 4 |
-| `slot_5` | 5 |
+| `slot_1` | 1 (tüfek) |
+| `slot_2` | 2 (tabanca) |
+| `slot_3` | 3 (belirlenecek) |
+
+> Silah slotları klasik 1-2-3 yapısındadır: 1 = tüfek, 2 = tabanca, 3 = henüz belirlenmedi. Silah değiştirme fare tekerleğiyle de yapılabilir.
