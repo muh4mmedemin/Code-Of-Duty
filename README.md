@@ -66,7 +66,8 @@ Code-Of-Duty/
 │   └── ui/                 # menüler ve HUD
 ├── docs/                   # proje dökümanları
 │   ├── CODING_STANDART.md  # kodlama standartları
-│   └── INPUT_MAP.md        # tuş atamaları
+│   ├── INPUT_MAP.md        # tuş atamaları
+│   └── SCRIPT_SYSTEMS.md   # script sistemleri
 ├── .github/ISSUE_TEMPLATE/ # issue şablonları
 ├── LICENSE.txt
 ├── THIRD PARTY LICENSE.txt
@@ -77,6 +78,7 @@ Code-Of-Duty/
 
 - [Kodlama Standartları](docs/CODING_STANDART.md): isimlendirme, script ve sahne düzeni kuralları
 - [Girdi Haritası](docs/INPUT_MAP.md): eylemler ve varsayılan tuşlar
+- [Script Sistemleri](docs/SCRIPT_SYSTEMS.md): script'lerde kullanılan sistemler ve script'ler arası akış
 
 ## Üçüncü Taraf Lisansları
 
