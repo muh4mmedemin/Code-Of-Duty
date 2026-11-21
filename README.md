@@ -18,10 +18,19 @@ Godot 4 ile geliştirilen, hikaye odaklı, tek oyunculu bir birinci şahıs niş
 ### Planlanan Özellikler
 
 - Akıcı hareket ve tatmin edici silah hissi
+- Yerden toplanabilen ve yere atılabilen silahlar
 - Farklı silahlar ve düşman türleri
 - Çatışma arenaları, sahnelenmiş büyük anlar ve telsiz diyaloğu ile anlatılan hikaye
 - Checkpoint ve kaydetme sistemi
 - Zorluk seviyeleri
+
+### Silah Sistemi
+
+- **Slotlar:** Klasik 1-2-3 yapısı: 1 = tüfek, 2 = tabanca, 3 = henüz belirlenmedi
+- **Yerden alma ve atma:** Yerdeki silahlar toplanabilir, eldeki silah yere atılabilir; silah mermi durumunu korur
+- **Ateş sistemi:** Ateşli silahlar anında isabet eden raycast (hitscan) kullanır, mermi düşüşü yoktur
+- **Mermi düşüşü:** Yalnızca el bombası ve RPG gibi patlayıcı silahlarda vardır (fizik tabanlı projectile)
+- **Kollar ve animasyon:** Kollar silah sahnesinde değil oyuncu karakterindedir; tek kol rig'i üzerinde her silaha özel animasyonlar kullanılır
 
 ## Teknik Bilgiler
 
