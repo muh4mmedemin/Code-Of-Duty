@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bhpb2thi0m1bu"]
 
 [ext_resource type="PackedScene" uid="uid://dibcmpde4snpj" path="res://scenes/player.tscn" id="1_o5qli"]
+[ext_resource type="PackedScene" uid="uid://02rx4xafi7j8" path="res://scenes/weapon_pickup.tscn" id="2_0wfyh"]
 
 [sub_resource type="Environment" id="Environment_sgp6g"]
 
@@ -39,10 +40,13 @@ transform = Transform3D(37.916515, 0, 0, 0, 1, 0, 0, 0, 28.680176, 0, 0, 0)
 mesh = SubResource("BoxMesh_ew6px")
 
 [node name="Box" type="StaticBody3D" parent="." unique_id=184100228]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 2.8560681, 0, 2.9901621, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.367581, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Box" unique_id=1978701126]
 shape = SubResource("BoxShape3D_dklp6")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Box/CollisionShape3D" unique_id=1285021355]
 mesh = SubResource("BoxMesh_fodb4")
+
+[node name="weapon_pickup" parent="." unique_id=861724328 instance=ExtResource("2_0wfyh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.9217687, 7.4911947, 5.6206145)

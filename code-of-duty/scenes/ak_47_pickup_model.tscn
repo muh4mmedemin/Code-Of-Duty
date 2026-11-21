@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://b4wosuup4x7q3"]
+
+[ext_resource type="Script" uid="uid://cky8l1ye0qfwl" path="res://scripts/ak_47_pickup_model.gd" id="1_iox8b"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iox8b"]
+albedo_color = Color(0.9647059, 0, 0, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_aeips"]
+material = SubResource("StandardMaterial3D_iox8b")
+top_radius = 0.2
+bottom_radius = 0.2
+height = 1.0
+
+[node name="ak47_pickup_model" type="Node3D" unique_id=839214327]
+script = ExtResource("1_iox8b")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1969315864]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0.33570272, 0)
+mesh = SubResource("CylinderMesh_aeips")

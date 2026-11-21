@@ -6,9 +6,13 @@ extends CharacterBody3D
 @onready var player_coll: CollisionShape3D = $CollisionShape3D
 @onready var player_coll_mesh: MeshInstance3D = $CollisionShape3D/MeshInstance3D
 @onready var crouch_checker_shape = ShapeCast3D.new()
+@onready var aim_ray = $Head/Camera3D/AimRay
+@onready var arms = $Head/Camera3D/WeaponHolder/Arms
 
-enum state {WALK, RUN, CROUCH, JUMP}
-var player_status = state.WALK
+@onready var player_current_weapon: Node3D
+
+enum State {WALK, RUN, CROUCH, JUMP}
+var player_status = State.WALK
 
 const PLAYER_NORMAL_HEIGHT = 3.0
 const PLAYER_CROUCH_HEIGHT = 2.0
@@ -22,6 +26,7 @@ const JUMP_VELOCITY = 4.5
 @export var Sensivity: float = 0.1
 
 func _ready() -> void:
+	#$Head/Camera3D/WeaponHolder/Arms/Ak47.position = Vector3(0.3, -0.3, -0.6)
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	player_coll.position.y = PLAYER_NORMAL_HEIGHT / 2.0
 	
@@ -53,10 +58,32 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.x = move_toward(velocity.x, 0, player_speed)
 		velocity.z = move_toward(velocity.z, 0, player_speed)
-
+	
 	move_and_slide()
 	handle_player_movement_state(delta)
-	print(player_speed)
+	if Input.is_action_just_pressed("weapon_fire") and arms.get_child_count() >= 1:
+		#$Head/Camera3D/WeaponHolder/Arms/Ak47.aim_ray = aim_ray
+		#$Head/Camera3D/WeaponHolder/Arms/Ak47.fire()
+		#var scene = preload("res://scenes/ak_47.tscn")
+		#var ins = scene.instantiate()
+		#ins.position = Vector3(0.3, -0.3, -0.6)
+		#$Head/Camera3D/WeaponHolder/Arms.add_child(ins)
+		#print("sa")
+		player_current_weapon.fire()
+	if Input.is_action_just_pressed("take_item") and arms.get_child_count() == 0 and aim_ray.is_colliding():
+		var target = aim_ray.get_collider()
+		var parent = target.get_parent()
+		if parent.is_in_group("pickup"):
+			print(parent.weapon_model)
+			var weapon = parent.weapon_model
+			var weapon_scene = weapon.instantiate()
+			arms.add_child(weapon_scene)
+			player_current_weapon = weapon_scene
+			player_current_weapon.aim_ray = aim_ray
+		else:
+			print("grupta değilmi")
+		
+	#print(player_speed)
 func _input(event):
 	if event is InputEventMouseMotion:
 		handle_camera_look(event)
@@ -75,27 +102,27 @@ func handle_player_movement_state(delta):
 	if crouch_checker_shape.is_colliding() == true:
 		return
 	 
-	if state.CROUCH == player_status and PLAYER_CROUCH_HEIGHT != player_coll.shape.height:
+	if State.CROUCH == player_status and PLAYER_CROUCH_HEIGHT != player_coll.shape.height:
 		handle_player_height(PLAYER_CROUCH_HEIGHT, delta)
-	elif state.CROUCH != player_status and PLAYER_NORMAL_HEIGHT != player_coll.shape.height:
+	elif State.CROUCH != player_status and PLAYER_NORMAL_HEIGHT != player_coll.shape.height:
 		handle_player_height(PLAYER_NORMAL_HEIGHT, delta)
 		
-	if Input.is_action_pressed("player_crouch") and player_status != state.RUN:
-		if player_status != state.CROUCH:
+	if Input.is_action_pressed("player_crouch") and player_status != State.RUN:
+		if player_status != State.CROUCH:
 			handle_player_height(PLAYER_CROUCH_HEIGHT, delta)
-			handle_player_speed(state.CROUCH)
-			player_status = state.CROUCH
-	elif Input.is_action_pressed("player_sprint") and player_status != state.CROUCH:
-		if player_status != state.RUN:
-			player_status = state.RUN
-			handle_player_speed(state.RUN)
-	elif player_status != state.WALK:
-		player_status = state.WALK
-		handle_player_speed(state.WALK)
+			handle_player_speed(State.CROUCH)
+			player_status = State.CROUCH
+	elif Input.is_action_pressed("player_sprint") and player_status != State.CROUCH:
+		if player_status != State.RUN:
+			player_status = State.RUN
+			handle_player_speed(State.RUN)
+	elif player_status != State.WALK:
+		player_status = State.WALK
+		handle_player_speed(State.WALK)
 
 	if was_player_status == player_status:
 		return
-	elif was_player_status == state.CROUCH:
+	elif was_player_status == State.CROUCH:
 		handle_player_height(PLAYER_NORMAL_HEIGHT, delta)
 
 func handle_player_height(new_height, delta):
@@ -106,10 +133,10 @@ func handle_player_height(new_height, delta):
 	
 
 func handle_player_speed(player_state):
-	if state.CROUCH == player_state:
+	if State.CROUCH == player_state:
 		player_speed = CROUCH_SPEED
-	elif state.RUN == player_state:
+	elif State.RUN == player_state:
 		player_speed = RUN_SPEED
-	elif state.WALK == player_state:
+	elif State.WALK == player_state:
 		player_speed = WALK_SPEED
 #endregion

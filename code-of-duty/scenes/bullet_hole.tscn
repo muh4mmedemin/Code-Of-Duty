@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://b21tfn18ddvhd"]
+
+[ext_resource type="Script" uid="uid://dkleon83f0p61" path="res://scripts/bullet_hole.gd" id="1_75sdo"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ew6px"]
+albedo_color = Color(1, 0.2627451, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_5ieep"]
+material = SubResource("StandardMaterial3D_ew6px")
+
+[node name="BulletHole" type="Node3D" unique_id=1080539486]
+script = ExtResource("1_75sdo")
+lifetime = 2.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1318179351]
+mesh = SubResource("BoxMesh_5ieep")
