@@ -3,6 +3,8 @@
 Godot 4 ile geliştirilen, hikaye odaklı, tek oyunculu bir birinci şahıs nişancı (FPS) oyunu. Oyun görev (mission) tabanlı bir kampanyadan oluşur; raunt, maç ya da çok oyunculu mod yoktur.
 
 > **Durum:** Erken geliştirme aşaması (prototip). Oyun henüz oynanabilir bir sürümde değil.
+>
+> **Şu an çalışanlar:** Birinci şahıs hareket ve fare ile bakış, koşma, eğilme (tavan kontrolüyle), zıplama, yerdeki silahı alma ve raycast ile ateş etme (test haritasında, geçici modellerle).
 
 ## Oyun Hakkında
 
@@ -26,23 +28,27 @@ Godot 4 ile geliştirilen, hikaye odaklı, tek oyunculu bir birinci şahıs niş
 
 ### Silah Sistemi
 
-- **Slotlar:** Klasik 1-2-3 yapısı: 1 = tüfek, 2 = tabanca, 3 = henüz belirlenmedi
-- **Yerden alma ve atma:** Yerdeki silahlar toplanabilir, eldeki silah yere atılabilir; silah mermi durumunu korur
-- **Ateş sistemi:** Ateşli silahlar anında isabet eden raycast (hitscan) kullanır, mermi düşüşü yoktur
-- **Mermi düşüşü:** Yalnızca el bombası ve RPG gibi patlayıcı silahlarda vardır (fizik tabanlı projectile)
-- **Kollar ve animasyon:** Kollar silah sahnesinde değil oyuncu karakterindedir; tek kol rig'i üzerinde her silaha özel animasyonlar kullanılır
+| Özellik | Tasarım | Durum |
+|---|---|---|
+| Ateş sistemi | Ateşli silahlar anında isabet eden raycast (hitscan) kullanır, mermi düşüşü yoktur | ✅ Var (oyuncunun `AimRay`'i ile; hasar ve atış hızı henüz uygulanmıyor) |
+| Silah verisi | Her silah türü için tek bir `WeaponData` (`.tres`); o türdeki tüm silahlar paylaşır | 🚧 Kısmen (`WeaponData` ve `data/weapons/ak47.tres` var; `ak_47.tscn` henüz kendi içine gömülü veriyi kullanıyor) |
+| Yerden alma | Yerdeki silahlar toplanabilir | ✅ Var (`take_item`, yalnızca eller boşken) |
+| Yere atma | Eldeki silah yere atılabilir; silah mermi durumunu korur | ⏳ Planlanıyor |
+| Slotlar | Klasik 1-2-3 yapısı: 1 = tüfek, 2 = tabanca, 3 = henüz belirlenmedi | ⏳ Planlanıyor (şu an tek silah taşınıyor) |
+| Mermi düşüşü | Yalnızca el bombası ve RPG gibi patlayıcı silahlarda (fizik tabanlı projectile) | ⏳ Planlanıyor |
+| Kollar ve animasyon | Kollar silah sahnesinde değil oyuncu karakterindedir; tek kol rig'i üzerinde her silaha özel animasyonlar | 🚧 Kısmen (oyuncuda `Arms` düğümü var; kol modeli ve animasyon yok) |
 
 ## Teknik Bilgiler
 
-- **Oyun motoru:** Godot 4.x (proje 4.7 ile oluşturuldu)
-- **Renderer:** Forward+ (Vulkan / Direct3D 12 destekli ekran kartı gerektirir)
+- **Oyun motoru:** Godot 4.7
+- **Renderer:** Forward+ (Vulkan / Direct3D 12 destekli ekran kartı gerektirir; Windows'ta Direct3D 12 sürücüsü seçili)
 - **Fizik motoru:** Jolt Physics
 - **Dil:** GDScript
 - **Platform:** PC
 
 ## Projeyi Çalıştırma
 
-1. [Godot 4](https://godotengine.org/download) sürümünü indir.
+1. [Godot 4.7](https://godotengine.org/download) veya daha yeni bir sürümü indir.
 2. Bu depoyu klonla:
    ```
    git clone https://github.com/muh4mmedemin/Code-Of-Duty.git
@@ -56,6 +62,8 @@ Godot 4 ile geliştirilen, hikaye odaklı, tek oyunculu bir birinci şahıs niş
 Code-Of-Duty/
 ├── code-of-duty/           # Godot projesi
 │   ├── project.godot       # proje dosyası
+│   ├── data/
+│   │   └── weapons/        # silah verileri (WeaponData .tres)
 │   ├── assets/
 │   │   ├── audio/          # ses efektleri ve müzik
 │   │   ├── models/         # 3D modeller
