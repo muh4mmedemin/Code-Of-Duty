@@ -10,6 +10,7 @@ extends CharacterBody3D
 @onready var arms = $Head/Camera3D/WeaponHolder/Arms
 
 @onready var player_current_weapon: Node3D
+@onready var player_current_weapon_scene: PackedScene
 
 enum State {WALK, RUN, CROUCH, JUMP}
 var player_status = State.WALK
@@ -62,19 +63,19 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	handle_player_movement_state(delta)
 	if Input.is_action_pressed("weapon_fire") and arms.get_child_count() >= 1:
-		#$Head/Camera3D/WeaponHolder/Arms/Ak47.aim_ray = aim_ray
-		#$Head/Camera3D/WeaponHolder/Arms/Ak47.fire()
-		#var scene = preload("res://scenes/ak_47.tscn")
-		#var ins = scene.instantiate()
-		#ins.position = Vector3(0.3, -0.3, -0.6)
-		#$Head/Camera3D/WeaponHolder/Arms.add_child(ins)
-		#print("sa")
 		player_current_weapon.fire()
 	if Input.is_action_just_pressed("take_item") and arms.get_child_count() == 0 and aim_ray.is_colliding():
 		take_item()
-	if Input.is_action_just_pressed("weapon_reload"):
+	if Input.is_action_just_pressed("weapon_reload") and player_current_weapon != null:
 		player_current_weapon.reload()
-	#print(player_speed)
+	if Input.is_action_just_pressed("drop_item") and arms.get_child_count() >= 1:
+		var scene = preload("res://scenes/weapon_pickup.tscn")
+		var ins = scene.instantiate()
+		ins.weapon_pick_model = player_current_weapon.data.weapon_pickup_model
+		ins.weapon_model = player_current_weapon_scene
+		ins.position = Vector3(5.0, 5.0, 5.0)
+		get_tree().current_scene.add_child(ins)
+		player_current_weapon.queue_free()
 func _input(event):
 	if event is InputEventMouseMotion:
 		handle_camera_look(event)
@@ -140,6 +141,7 @@ func take_item():
 	if parent.is_in_group("pickup"):
 		print(parent.weapon_model)
 		var weapon = parent.weapon_model
+		player_current_weapon_scene = weapon
 		var weapon_scene = weapon.instantiate()
 		arms.add_child(weapon_scene)
 		player_current_weapon = weapon_scene

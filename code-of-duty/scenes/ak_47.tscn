@@ -2,16 +2,18 @@
 
 [ext_resource type="Script" uid="uid://paycwditqxib" path="res://scripts/weapon.gd" id="1_sj0nw"]
 [ext_resource type="Script" uid="uid://cvjobmrxia7yc" path="res://scripts/weapon_data.gd" id="2_8s1la"]
+[ext_resource type="PackedScene" uid="uid://b4wosuup4x7q3" path="res://scenes/ak_47_pickup_model.tscn" id="3_s2423"]
 
 [sub_resource type="Resource" id="Resource_3vyb7"]
 script = ExtResource("2_8s1la")
 weapon_name = "ak47"
 total_ammo = 60
+weapon_pickup_model = ExtResource("3_s2423")
 metadata/_custom_type_script = "uid://cvjobmrxia7yc"
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_jv1ba"]
 
-[node name="Ak47" type="Node3D" unique_id=1350045073]
+[node name="Ak47" type="Node3D" unique_id=1350045073 groups=["gun"]]
 script = ExtResource("1_sj0nw")
 data = SubResource("Resource_3vyb7")
 
