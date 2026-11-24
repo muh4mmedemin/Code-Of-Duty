@@ -5,3 +5,5 @@ extends Resource
 @export var damage: float = 25.0
 @export var fire_rate: float = 0.2
 @export var magazine_size: int = 30
+@export var total_ammo: int = 180
+@export var reload_time: float = 2.0

@@ -6,6 +6,7 @@
 [sub_resource type="Resource" id="Resource_3vyb7"]
 script = ExtResource("2_8s1la")
 weapon_name = "ak47"
+total_ammo = 60
 metadata/_custom_type_script = "uid://cvjobmrxia7yc"
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_jv1ba"]
@@ -17,3 +18,6 @@ data = SubResource("Resource_3vyb7")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1967454287]
 transform = Transform3D(0.20908217, 0, 0, 0, -1.8525354e-08, 0.293642, 0, -0.42381072, -1.28355016e-08, 0, 0, 0)
 mesh = SubResource("CylinderMesh_jv1ba")
+
+[node name="ReloadTimer" type="Timer" parent="." unique_id=804024517]
+one_shot = true

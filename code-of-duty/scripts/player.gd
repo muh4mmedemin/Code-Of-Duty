@@ -61,7 +61,7 @@ func _physics_process(delta: float) -> void:
 	
 	move_and_slide()
 	handle_player_movement_state(delta)
-	if Input.is_action_just_pressed("weapon_fire") and arms.get_child_count() >= 1:
+	if Input.is_action_pressed("weapon_fire") and arms.get_child_count() >= 1:
 		#$Head/Camera3D/WeaponHolder/Arms/Ak47.aim_ray = aim_ray
 		#$Head/Camera3D/WeaponHolder/Arms/Ak47.fire()
 		#var scene = preload("res://scenes/ak_47.tscn")
@@ -71,18 +71,9 @@ func _physics_process(delta: float) -> void:
 		#print("sa")
 		player_current_weapon.fire()
 	if Input.is_action_just_pressed("take_item") and arms.get_child_count() == 0 and aim_ray.is_colliding():
-		var target = aim_ray.get_collider()
-		var parent = target.get_parent()
-		if parent.is_in_group("pickup"):
-			print(parent.weapon_model)
-			var weapon = parent.weapon_model
-			var weapon_scene = weapon.instantiate()
-			arms.add_child(weapon_scene)
-			player_current_weapon = weapon_scene
-			player_current_weapon.aim_ray = aim_ray
-		else:
-			print("grupta değilmi")
-		
+		take_item()
+	if Input.is_action_just_pressed("weapon_reload"):
+		player_current_weapon.reload()
 	#print(player_speed)
 func _input(event):
 	if event is InputEventMouseMotion:
@@ -97,6 +88,7 @@ func handle_camera_look(event):
 	player.rotation_degrees.y -= event.relative.x * Sensivity
 
 #region PLAYER_MOVEMENT_STATE
+
 func handle_player_movement_state(delta):
 	var was_player_status = player_status
 	if crouch_checker_shape.is_colliding() == true:
@@ -139,4 +131,20 @@ func handle_player_speed(player_state):
 		player_speed = RUN_SPEED
 	elif State.WALK == player_state:
 		player_speed = WALK_SPEED
+#endregion
+
+#region PLAYER_FIRE_AND_TAKE_KEYS
+func take_item():
+	var target = aim_ray.get_collider()
+	var parent = target.get_parent()
+	if parent.is_in_group("pickup"):
+		print(parent.weapon_model)
+		var weapon = parent.weapon_model
+		var weapon_scene = weapon.instantiate()
+		arms.add_child(weapon_scene)
+		player_current_weapon = weapon_scene
+		player_current_weapon.aim_ray = aim_ray
+		parent.queue_free()
+	else:
+		print("grupta değilmi")
 #endregion
