@@ -50,3 +50,6 @@ mesh = SubResource("BoxMesh_fodb4")
 
 [node name="weapon_pickup" parent="." unique_id=861724328 instance=ExtResource("2_0wfyh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.9217687, 7.4911947, 5.6206145)
+
+[node name="weapon_pickup2" parent="." unique_id=1110184849 instance=ExtResource("2_0wfyh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.274195, 6.061156, 11.117345)

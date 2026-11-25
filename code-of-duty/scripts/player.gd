@@ -60,6 +60,8 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, player_speed)
 		velocity.z = move_toward(velocity.z, 0, player_speed)
 	
+	print(camera.global_transform.basis.z)
+	
 	move_and_slide()
 	handle_player_movement_state(delta)
 	if Input.is_action_pressed("weapon_fire") and arms.get_child_count() >= 1:
@@ -69,13 +71,7 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("weapon_reload") and player_current_weapon != null:
 		player_current_weapon.reload()
 	if Input.is_action_just_pressed("drop_item") and arms.get_child_count() >= 1:
-		var scene = preload("res://scenes/weapon_pickup.tscn")
-		var ins = scene.instantiate()
-		ins.weapon_pick_model = player_current_weapon.data.weapon_pickup_model
-		ins.weapon_model = player_current_weapon_scene
-		ins.position = Vector3(5.0, 5.0, 5.0)
-		get_tree().current_scene.add_child(ins)
-		player_current_weapon.queue_free()
+		drop_item()
 func _input(event):
 	if event is InputEventMouseMotion:
 		handle_camera_look(event)
@@ -135,18 +131,47 @@ func handle_player_speed(player_state):
 #endregion
 
 #region PLAYER_FIRE_AND_TAKE_KEYS
+#yerden silah/item almaya yarıyor
+
+func drop_item():
+	var scene = preload("res://scenes/weapon_pickup.tscn")
+	var ins = scene.instantiate()
+	ins.weapon_pick_model = player_current_weapon.data.weapon_pickup_model
+	ins.weapon_model = player_current_weapon_scene
+	ins.global_position = camera.global_position
+	var rg_body = ins.get_child(0)
+	get_tree().current_scene.add_child(ins)
+	ins.total_ammo = player_current_weapon.w_total_ammo
+	ins.magazine_ammo = player_current_weapon.w_magazine_ammo
+	rg_body.gravity_scale = 2.0
+	rg_body.apply_central_impulse(3.0 * -camera.global_transform.basis.z)
+	player_current_weapon.queue_free()
+
 func take_item():
 	var target = aim_ray.get_collider()
 	var parent = target.get_parent()
 	if parent.is_in_group("pickup"):
 		print(parent.weapon_model)
 		var weapon = parent.weapon_model
-		player_current_weapon_scene = weapon
 		var weapon_scene = weapon.instantiate()
 		arms.add_child(weapon_scene)
+		player_current_weapon_scene = weapon
 		player_current_weapon = weapon_scene
 		player_current_weapon.aim_ray = aim_ray
+		reload_picked_gun_ammo(parent)
 		parent.queue_free()
 	else:
 		print("grupta değilmi")
+
+# Silahı alırken bırakılan silahın mermisini alıyor,
+# -1 ise silah ilk defa ele alınıyor demek o yüzden normal ful geliyor
+func reload_picked_gun_ammo(weapon_picked: Node3D) -> void:
+	var w_picked_total_ammo = weapon_picked.total_ammo
+	var w_picked_inmagazine_ammo = weapon_picked.magazine_ammo
+	if w_picked_inmagazine_ammo == -1 or w_picked_total_ammo == -1:
+		player_current_weapon.w_total_ammo =  player_current_weapon.data.total_ammo
+		player_current_weapon.w_magazine_ammo = player_current_weapon.data.magazine_size
+	else:
+		player_current_weapon.w_total_ammo = weapon_picked.total_ammo
+		player_current_weapon.w_magazine_ammo = weapon_picked.magazine_ammo
 #endregion

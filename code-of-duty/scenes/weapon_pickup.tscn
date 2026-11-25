@@ -4,8 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://blx4su87yigf7" path="res://scenes/ak_47.tscn" id="2_8i8db"]
 [ext_resource type="PackedScene" uid="uid://b4wosuup4x7q3" path="res://scenes/ak_47_pickup_model.tscn" id="3_qjt78"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_jv1ba"]
-size = Vector3(0.4897461, 0.4934082, 1)
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_3vyb7"]
 
 [node name="weapon_pickup" type="Node3D" unique_id=861724328 groups=["pickup"]]
 script = ExtResource("1_0reak")
@@ -15,6 +14,7 @@ weapon_pick_model = ExtResource("3_qjt78")
 [node name="RigidBody3D" type="RigidBody3D" parent="." unique_id=733943072]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D" unique_id=202466751]
-shape = SubResource("BoxShape3D_jv1ba")
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+shape = SubResource("CylinderShape3D_3vyb7")
 
 [node name="model_holder" type="Node3D" parent="RigidBody3D" unique_id=957400746]

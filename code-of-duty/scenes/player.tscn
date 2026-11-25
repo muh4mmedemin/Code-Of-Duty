@@ -15,7 +15,6 @@ size = Vector3(0.5844482, 0.58496094, 0.036621094)
 
 [node name="CharacterBody3D" type="CharacterBody3D" parent="." unique_id=660356162]
 script = ExtResource("1_3vyb7")
-Sensivity = null
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D" unique_id=1060700495]
 shape = SubResource("CapsuleShape3D_jv1ba")
