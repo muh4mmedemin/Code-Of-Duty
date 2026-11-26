@@ -60,7 +60,6 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, player_speed)
 		velocity.z = move_toward(velocity.z, 0, player_speed)
 	
-	print(camera.global_transform.basis.z)
 	
 	move_and_slide()
 	handle_player_movement_state(delta)
@@ -145,6 +144,8 @@ func drop_item():
 	ins.magazine_ammo = player_current_weapon.w_magazine_ammo
 	rg_body.gravity_scale = 2.0
 	rg_body.apply_central_impulse(3.0 * -camera.global_transform.basis.z)
+	rg_body.global_rotation_degrees.y = camera.global_rotation_degrees.y + 90.0
+	self.add_collision_exception_with(rg_body)
 	player_current_weapon.queue_free()
 
 func take_item():

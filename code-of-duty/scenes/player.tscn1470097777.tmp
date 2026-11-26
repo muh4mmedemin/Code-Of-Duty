@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://dibcmpde4snpj"]
+
+[ext_resource type="Script" uid="uid://vm2n4f8swwv" path="res://scripts/player.gd" id="1_3vyb7"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jv1ba"]
+height = 3.0
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_5ieep"]
+height = 3.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_fodb4"]
+size = Vector3(0.5844482, 0.58496094, 0.036621094)
+
+[node name="Player" type="Node3D" unique_id=47788392]
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="." unique_id=660356162]
+script = ExtResource("1_3vyb7")
+Sensivity = null
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D" unique_id=1060700495]
+shape = SubResource("CapsuleShape3D_jv1ba")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D/CollisionShape3D" unique_id=111169447]
+mesh = SubResource("CapsuleMesh_5ieep")
+
+[node name="Head" type="Node3D" parent="CharacterBody3D" unique_id=82191363]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2267923, 0)
+
+[node name="Camera3D" type="Camera3D" parent="CharacterBody3D/Head" unique_id=1426303998]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1350236, -0.2952007)
+
+[node name="AimRay" type="RayCast3D" parent="CharacterBody3D/Head/Camera3D" unique_id=1525654084]
+target_position = Vector3(0, 0, -100)
+
+[node name="WeaponHolder" type="Node3D" parent="CharacterBody3D/Head/Camera3D" unique_id=1482872337]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.19915433, -0.2963313, -0.13610458)
+
+[node name="Arms" type="Node3D" parent="CharacterBody3D/Head/Camera3D/WeaponHolder" unique_id=81527058]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D/Head" unique_id=1234267546]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.027695686, 0.16238701, -0.17091146)
+mesh = SubResource("BoxMesh_fodb4")
