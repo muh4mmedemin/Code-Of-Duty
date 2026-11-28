@@ -63,8 +63,16 @@ func _physics_process(delta: float) -> void:
 	
 	move_and_slide()
 	handle_player_movement_state(delta)
-	if Input.is_action_pressed("weapon_fire") and arms.get_child_count() >= 1:
-		player_current_weapon.fire()
+	if player_current_weapon != null and arms.get_child_count() >= 1:
+		if Input.is_action_just_pressed("weapon_fire_mode_change"):
+			player_current_weapon.change_fire_mode()
+		var fire_mode: bool
+		if player_current_weapon.w_auto_mode:
+			fire_mode = Input.is_action_pressed("weapon_fire")
+		else:
+			fire_mode = Input.is_action_just_pressed("weapon_fire")
+		if fire_mode:
+			player_current_weapon.fire()
 	if Input.is_action_just_pressed("take_item") and arms.get_child_count() == 0 and aim_ray.is_colliding():
 		take_item()
 	if Input.is_action_just_pressed("weapon_reload") and player_current_weapon != null:
@@ -137,11 +145,12 @@ func drop_item():
 	var ins = scene.instantiate()
 	ins.weapon_pick_model = player_current_weapon.data.weapon_pickup_model
 	ins.weapon_model = player_current_weapon_scene
-	ins.global_position = camera.global_position
 	var rg_body = ins.get_child(0)
 	get_tree().current_scene.add_child(ins)
+	ins.global_position = camera.global_position
 	ins.total_ammo = player_current_weapon.w_total_ammo
 	ins.magazine_ammo = player_current_weapon.w_magazine_ammo
+	ins.auto_mode = player_current_weapon.w_auto_mode
 	rg_body.gravity_scale = 2.0
 	rg_body.apply_central_impulse(3.0 * -camera.global_transform.basis.z)
 	rg_body.global_rotation_degrees.y = camera.global_rotation_degrees.y + 90.0
@@ -160,6 +169,7 @@ func take_item():
 		player_current_weapon = weapon_scene
 		player_current_weapon.aim_ray = aim_ray
 		reload_picked_gun_ammo(parent)
+		player_current_weapon.w_auto_mode = parent.auto_mode
 		parent.queue_free()
 	else:
 		print("grupta değilmi")

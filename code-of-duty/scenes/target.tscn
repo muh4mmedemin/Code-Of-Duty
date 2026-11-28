@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://dw8837r3oexjn"]
+
+[ext_resource type="PackedScene" uid="uid://knmsfa5c8jgq" path="res://scenes/health_component.tscn" id="1_b37e2"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dklp6"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_fodb4"]
+
+[node name="StaticBody3D" type="StaticBody3D" unique_id=1319538052]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1633186122]
+shape = SubResource("BoxShape3D_dklp6")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1417919637]
+mesh = SubResource("BoxMesh_fodb4")
+
+[node name="HealthComponent" parent="." unique_id=834340928 instance=ExtResource("1_b37e2")]

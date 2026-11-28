@@ -2,9 +2,10 @@ class_name WeaponData
 extends Resource
 
 @export var weapon_name: String = ""
-@export var damage: float = 25.0
+@export var damage: int = 25
 @export var fire_rate: float = 0.2
 @export var magazine_size: int = 30
 @export var total_ammo: int = 180
 @export var reload_time: float = 2.0
 @export var weapon_pickup_model: PackedScene = null
+@export var auto_mod: bool = false
